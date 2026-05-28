@@ -1,0 +1,83 @@
+.chapters-page { padding: 40px; max-width: 700px; }
+
+.breadcrumb {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 28px; font-size: 13px;
+  color: var(--text-muted); flex-wrap: wrap;
+}
+.breadcrumb button {
+  background: none; border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-body); font-size: 13px;
+  cursor: pointer; padding: 0; transition: color 0.2s;
+}
+.breadcrumb button:hover { color: var(--accent); }
+.breadcrumb-active { color: var(--text-primary); font-weight: 600; }
+
+.quiz-start-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  padding: 40px;
+}
+
+.quiz-start-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+.quiz-start-icon { font-size: 40px; }
+.quiz-start-labels { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.quiz-start-card h1 { font-size: 28px; margin-bottom: 10px; }
+.chapter-desc { color: var(--text-secondary); margin-bottom: 36px; font-size: 15px; }
+
+.quiz-rules {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 24px;
+  margin-bottom: 36px;
+}
+.quiz-rules h3 { font-size: 16px; margin-bottom: 16px; color: var(--text-secondary); }
+
+.rules-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.rule-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.rule-icon {
+  font-size: 20px;
+  color: var(--accent);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.rule-item strong { display: block; font-size: 13px; margin-bottom: 2px; }
+.rule-item p { font-size: 12px; color: var(--text-muted); }
+
+.quiz-start-actions {
+  display: flex; align-items: center; gap: 12px; flex-wrap: wrap;
+}
+.btn-spinner {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(0,0,0,0.2);
+  border-top-color: #0a0e1a;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  display: inline-block;
+}
+
+.page-loader { display: flex; justify-content: center; align-items: center; min-height: 60vh; }
+
+@media (max-width: 600px) {
+  .chapters-page { padding: 24px 20px; }
+  .quiz-start-card { padding: 24px; }
+  .rules-grid { grid-template-columns: 1fr; }
+}

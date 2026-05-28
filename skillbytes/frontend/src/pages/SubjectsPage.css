@@ -1,0 +1,83 @@
+.subjects-page { padding: 40px; max-width: 800px; }
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 28px;
+  font-size: 13px;
+  color: var(--text-muted);
+  flex-wrap: wrap;
+}
+.breadcrumb button {
+  background: none; border: none;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 13px;
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.2s;
+}
+.breadcrumb button:hover { color: var(--accent); }
+.breadcrumb-active { color: var(--text-primary); font-weight: 600; }
+
+.subject-hero {
+  display: flex; align-items: center; gap: 20px;
+  padding: 28px; margin-bottom: 36px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+.subject-hero-icon { font-size: 44px; }
+.subject-hero h1 { font-size: 26px; margin-bottom: 4px; }
+.subject-hero p { color: var(--text-secondary); font-size: 14px; }
+
+.section-header { display: flex; align-items: center; gap: 12px; margin-bottom: 14px; }
+.section-header h2 { font-size: 20px; }
+
+.chapters-list { display: flex; flex-direction: column; gap: 10px; }
+
+.chapter-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  opacity: 0;
+}
+.chapter-order {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--text-muted);
+  min-width: 44px;
+  text-align: center;
+  transition: color 0.2s;
+}
+.chapter-row:hover .chapter-order { color: var(--accent); }
+.chapter-info { flex: 1; }
+.chapter-info h3 { font-size: 15px; margin-bottom: 3px; }
+.chapter-info p { font-size: 13px; color: var(--text-secondary); }
+
+.chapter-cta {
+  display: flex; align-items: center; gap: 10px; flex-shrink: 0;
+}
+.chapter-arrow { color: var(--text-muted); transition: all 0.2s; }
+.chapter-row:hover .chapter-arrow { color: var(--accent); transform: translateX(4px); }
+
+.empty-state {
+  text-align: center;
+  padding: 60px 24px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+}
+.empty-icon { font-size: 48px; margin-bottom: 16px; }
+.empty-state h3 { font-size: 20px; margin-bottom: 8px; }
+.empty-state p { color: var(--text-secondary); }
+
+.page-loader { display: flex; justify-content: center; align-items: center; min-height: 60vh; }
+
+@media (max-width: 768px) {
+  .subjects-page { padding: 24px 20px; }
+  .chapter-cta .badge { display: none; }
+}
