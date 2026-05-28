@@ -3,7 +3,7 @@ from database.connection import (
     users_col, exams_col, subjects_col, chapters_col,
     questions_col, quiz_sessions_col, analytics_col
 )
-from utils.helpers import serialize_doc
+from utils.helpers import serialize_doc, serialize_list
 from datetime import datetime, timedelta
 import random
 
