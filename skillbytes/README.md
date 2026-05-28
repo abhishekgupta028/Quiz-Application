@@ -85,10 +85,128 @@ curl -X POST http://localhost:8000/api/seed/
 This creates:
 - 8 users
 - 4 exams (UPSC, JEE, NEET, CAT)
-- 12+ subjects
-- 20+ chapters
-- 30+ questions with explanations
-- 14 days of historical quiz sessions and analytics
+- 13 subjects
+- 40 chapters
+- 200 questions with explanations, difficulty levels, and answer options
+- 14+ days of historical quiz sessions and analytics data
+
+---
+
+## 📸 Application Screenshots & MongoDB Data
+
+The `skillbyte_SS/` folder contains comprehensive screenshots demonstrating:
+
+### 🎯 User Interface Flow
+
+**Screenshot 128** - User Selection Page
+- Shows all 8 seeded users with their profiles
+- Avatar icons and email addresses
+- "Reseed Database" button to refresh data
+- Multi-user support for testing
+
+**Screenshot 129** - Home Dashboard
+- Welcome message with user name
+- 4 available exams (UPSC, JEE, NEET, CAT)
+- Quick stats: 4 Exams, ∞ Questions
+- Sidebar with Exams and Analytics navigation
+
+**Screenshot 130** - Exam Subjects Page (JEE Example)
+- JEE Advanced exam details
+- 3 subjects: Mathematics, Physics, Chemistry
+- Subject descriptions and icons
+- Clickable subject cards to access chapters
+
+**Screenshot 131** - Chapter Selection Page (Physics)
+- Physics subject overview
+- 3 chapters with detailed descriptions:
+  - Kinematics (Motion in 1D and 2D)
+  - Laws of Motion (Newton's laws)
+  - Work Energy Power (Energy theorems)
+- "Start Quiz" buttons for each chapter
+- Chapter ordering and numbering
+
+**Screenshots 132-135** - Quiz Taking Interface
+- Individual question display
+- Multiple choice options (A, B, C, D)
+- Question counter (Q1/5, Q2/5, etc.)
+- Option selection highlighting
+- Smooth navigation between questions
+- Real-time feedback on answer submission
+
+**Screenshot 136** - Quiz Result Screen
+- Score visualization with circular progress (40%)
+- Correct/Wrong/Average Time metrics (2/5 correct)
+- Answer Review section showing:
+  - Q1: Correct (green checkmark)
+  - Q2-Q5: Wrong (red X marks)
+  - Time taken per question
+- "Back to Exams" and "View Analytics" buttons
+
+**Screenshot 137** - Analytics Dashboard
+- Real-time quiz engagement metrics:
+  - **Daily Active Users**: Profile count
+  - **Weekly Active Users**: Weekly engagement
+  - **Questions Served**: 540+ questions delivered
+  - **Questions Answered**: 540+ responses recorded
+  - **Avg Response Time**: 252.8 seconds per question
+  - **Completion Rate**: 70.6% (58/138 quizzes)
+  - **Avg Questions/Session**: 5 questions
+  - **Abandoned Quizzes**: 25 sessions not completed
+- **Daily Quiz Activity Chart**: 14-day trend line showing usage patterns
+- **Quiz Drop-off Analysis**: 140 started, 100 completed, 40 abandoned
+- **Peak Activity Hours & Score Distribution** sections
+
+### 🗄️ MongoDB Data Verification
+
+**Screenshot 140** - Questions Collection
+- MongoDB aggregation query: `db.questions.aggregate([{ $group: { _id: "$chapter_id", count: { $sum: 1 } } }])`
+- Verification results showing:
+  - **Each chapter has exactly 5 questions**
+  - **40 chapters total** with questions properly mapped
+  - Sample chapter IDs with their corresponding question counts
+- Quiz sessions data showing:
+  - user_id, exam_id, subject_id, chapter_id linking
+  - started_at timestamp tracking
+  - status: "abandoned" or "in_progress"
+  - question_ids array with question references
+
+**Screenshot 141** - Analytics Collection & Quiz Sessions
+- Analytics events tracking:
+  - **quiz_started** event: User initiates quiz with timestamp, exam/subject/chapter context
+  - **question_answered** event: Individual question responses with:
+    - is_correct: true/false flag
+    - response_duration_seconds: Time taken
+    - timestamp: Exact answer time
+- Quiz sessions showing:
+  - total_questions: 5
+  - avg_response_time: 30.74 seconds per question
+  - Complete quiz session data structure
+
+**Screenshot 142** - Database Summary & Collection Counts
+- MongoDB count verification:
+  ```
+  db.subjects.countDocuments()      → 13 subjects
+  db.chapters.countDocuments()       → 40 chapters  
+  db.questions.countDocuments()      → 200 questions
+  db.quiz_sessions.countDocuments()  → [historical sessions]
+  db.analytics.countDocuments()      → 797 events
+  ```
+- Analytics events showing:
+  - Complete quiz_started, question_answered, quiz_completed tracking
+  - Per-question response time measurement
+  - Correct/incorrect answer validation
+- Database integrity verification confirming all collections properly seeded
+
+### 📊 Data Integrity Verification
+
+The screenshots confirm:
+✅ **All 40 chapters have exactly 5 questions each** (200 total questions)
+✅ **4 exams properly structured** with subjects and chapters
+✅ **8 seeded users** with profile data
+✅ **Analytics tracking working** (797+ events recorded)
+✅ **Quiz sessions storing** user responses and timing data
+✅ **Answer correctness** properly validated and tracked
+✅ **No missing chapters** - all chapters accessible and quizzable
 
 ---
 
